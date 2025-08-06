@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Academy - Learn Blockchain & Cryptocurrency</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fab fa-bitcoin"></i>
+                <span>Crypto Academy</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active" data-page="home">HOME</a></li>
+                    <li><a href="courses.html" data-page="courses">COURSES</a></li>
+                    <li><a href="about.html" data-page="about">ABOUT US</a></li>
+                    <li><a href="blogs.html" data-page="blogs">BLOGS</a></li>
+                    <li><a href="affiliate.html" data-page="affiliate">AFFILIATE</a></li>
+<li><a href="#" data-page="login" id="login-btn"><span id="nav-username">LOG IN</span></a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section class="page active" id="home">
+            <div class="hero">
+                <h1>Master Cryptocurrency & Blockchain Technology</h1>
+                <p>Learn from industry experts and start your journey in the world of decentralized finance</p>
+                <button class="cta-btn">Start Learning Now</button>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Beginner Friendly</h3>
+                    <p>No prior knowledge required. Start from scratch.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Market Analysis</h3>
+                    <p>Learn technical and fundamental analysis techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Smart Contracts</h3>
+                    <p>Develop and deploy your own blockchain applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Page -->
+        <section class="page" id="courses">
+            <h2>Our Crypto Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <img src="https://via.placeholder.com/300x200?text=Crypto+Basics" alt="Crypto Basics">
+                    <h3>Crypto Fundamentals</h3>
+                    <p>Learn the basics of blockchain, wallets, and transactions.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 4 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner</span>
+                    </div>
+                    <button class="enroll-btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <img src="https://via.placeholder.com/300x200?text=Trading" alt="Trading">
+                    <h3>Crypto Trading Masterclass</h3>
+                    <p>Master technical analysis and trading strategies.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 6 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
+                    </div>
+                    <button class="enroll-btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <img src="https://via.placeholder.com/300x200?text=DeFi" alt="DeFi">
+                    <h3>DeFi & Smart Contracts</h3>
+                    <p>Build decentralized applications on Ethereum.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 8 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Advanced</span>
+                    </div>
+                    <button class="enroll-btn">Enroll Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Page -->
+        <section class="page" id="about">
+            <h2>About Crypto Academy</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Founded in 2018, Crypto Academy has been at the forefront of blockchain education, helping thousands of students navigate the complex world of cryptocurrencies and decentralized technologies.</p>
+                    <p>Our team consists of industry veterans with experience in blockchain development, cryptocurrency trading, and decentralized finance protocols.</p>
+                    <p>We believe in making blockchain education accessible to everyone, regardless of their technical background.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x300?text=Our+Team" alt="Our Team">
+                </div>
+            </div>
+        </section>
+
+        <!-- Blogs Page -->
+        <section class="page" id="blogs">
+            <h2>Latest Crypto Articles</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=Bitcoin" alt="Bitcoin">
+                    <div class="blog-content">
+                        <h3>Bitcoin Halving 2024: What to Expect</h3>
+                        <p class="blog-meta">Posted on May 15, 2024</p>
+                        <p>An in-depth analysis of the upcoming Bitcoin halving event and its potential market impact.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=Ethereum" alt="Ethereum">
+                    <div class="blog-content">
+                        <h3>Ethereum 2.0: The Complete Guide</h3>
+                        <p class="blog-meta">Posted on April 28, 2024</p>
+                        <p>Everything you need to know about Ethereum's transition to proof-of-stake.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://via.placeholder.com/300x200?text=DeFi" alt="DeFi">
+                    <div class="blog-content">
+                        <h3>Top DeFi Projects to Watch in 2024</h3>
+                        <p class="blog-meta">Posted on April 10, 2024</p>
+                        <p>Our analysts pick the most promising decentralized finance projects this year.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Affiliate Page -->
+        <section class="page" id="affiliate">
+            <h2>Affiliate Program</h2>
+            <div class="affiliate-content">
+                <div class="affiliate-text">
+                    <h3>Earn Crypto By Sharing Knowledge</h3>
+                    <p>Join our affiliate program and earn commissions for every student you refer to Crypto Academy.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 20% commission on all course sales</li>
+                        <li><i class="fas fa-check-circle"></i> Recurring earnings for subscription products</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time tracking dashboard</li>
+                        <li><i class="fas fa-check-circle"></i> Payouts in crypto or fiat</li>
+                    </ul>
+                    <button class="cta-btn">Join Affiliate Program</button>
+                </div>
+                <div class="affiliate-image">
+                    <img src="https://via.placeholder.com/400x300?text=Affiliate+Program" alt="Affiliate Program">
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section class="page" id="login">
+            <div class="login-container">
+                <div class="login-form">
+                    <h2>Login to Your Account</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="login-id">Username or Email</label>
+                            <input type="text" id="login-id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <button type="submit" class="login-btn">Log In</button>
+                    </form>
+                    <button id="google-login" class="login-btn" style="background:#4285F4;margin-top:10px"><i class="fab fa-google" style="margin-right:8px"></i>Log in with Google</button>
+                    <p class="signup-link">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+                </div>
+                
+                <div class="signup-form" style="display: none;">
+                    <h2>Create New Account</h2>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" id="signup-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-referral">Referral Code (optional)</label>
+                            <input type="text" id="signup-referral">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password (min 8 characters)</label>
+                            <input type="password" id="signup-password" required minlength="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" required minlength="8">
+                        </div>
+                        <button type="submit" class="signup-btn">Sign Up</button>
+                    </form>
+                    <p class="login-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Crypto Academy</h3>
+                <p>Your gateway to blockchain and cryptocurrency education.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="courses">Courses</a></li>
+                    <li><a href="#" data-page="blogs">Blog</a></li>
+                    <li><a href="#" data-page="affiliate">Affiliate</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Crypto Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Logout handler for nav username
+        document.getElementById('nav-username').addEventListener('click', function(e) {
+          if (loggedInUser) {
+            e.preventDefault();
+            loggedInUser = null;
+            document.getElementById('nav-username').innerHTML = 'LOG IN';
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('home').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+        // Simulated user database for demo
+        let loggedInUser = null;
+
+        document.getElementById('login-btn').addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+          document.getElementById('login').classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // Always show login form by default
+          document.querySelector('.login-form').style.display = '';
+          document.querySelector('.signup-form').style.display = 'none';
+        });
+
+        // SPA toggle: Sign up and Log in links
+        document.getElementById('show-signup').addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector('.login-form').style.display = 'none';
+          document.querySelector('.signup-form').style.display = '';
+        });
+        document.getElementById('show-login').addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector('.login-form').style.display = '';
+          document.querySelector('.signup-form').style.display = 'none';
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const loginId = document.getElementById('login-id').value.trim();
+          const password = document.getElementById('password').value;
+          fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ loginId, password })
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.token) {
+              loggedInUser = data.user;
+              alert('Successfully logged in!');
+              document.getElementById('nav-username').innerHTML = `<i class="fas fa-user-circle" style="margin-right:6px;"></i> ${data.user.username}`;
+              document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+              document.getElementById('home').classList.add('active');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              document.querySelector('.login-form').style.display = '';
+              document.querySelector('.signup-form').style.display = 'none';
+            } else {
+              alert(data.message || 'Account not found. Please register to log in.');
+              document.querySelector('.login-form').style.display = 'none';
+              document.querySelector('.signup-form').style.display = '';
+            }
+          })
+          .catch(() => {
+            alert('Server error. Please try again later.');
+          });
+        });
+
+        // Signup form handler
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const username = document.getElementById('signup-username').value.trim();
+          const email = document.getElementById('signup-email').value.trim();
+          const referral = document.getElementById('signup-referral').value.trim();
+          const password = document.getElementById('signup-password').value;
+          const confirmPassword = document.getElementById('confirm-password').value;
+          if (!username || !email || !password || !confirmPassword) {
+            alert('Please fill in all fields.');
+            return;
+          }
+          if (password.length < 8) {
+            alert('Password must be at least 8 characters long.');
+            return;
+          }
+          if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+          }
+          fetch('http://localhost:3000/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password, referral })
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.message === 'Registered successfully') {
+              alert('Registration successful! You can now log in.');
+              document.querySelector('.login-form').style.display = '';
+              document.querySelector('.signup-form').style.display = 'none';
+            } else {
+              alert(data.message || 'Registration failed.');
+            }
+          })
+          .catch(() => {
+            alert('Server error. Please try again later.');
+          });
+        });
+
+        // Responsive navbar toggle for media screens
+        // Google login demo handler
+        document.getElementById('google-login').addEventListener('click', function(e) {
+          e.preventDefault();
+          // Simulate Google login (frontend only)
+          loggedInUser = { username: 'GoogleUser', email: 'googleuser@gmail.com' };
+          document.getElementById('nav-username').innerHTML = `<i class="fas fa-user-circle" style="margin-right:6px;"></i> GoogleUser`;
+          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+          document.getElementById('home').classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          document.querySelector('.login-form').style.display = '';
+          document.querySelector('.signup-form').style.display = 'none';
+        });
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        burger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          burger.classList.toggle('toggle');
+          // Show/hide nav data (ul li) with .active class
+        });
+        // Hide menu on nav link click (mobile)
+        document.querySelectorAll('.nav-links li a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              navLinks.classList.remove('active');
+              burger.classList.remove('toggle');
+            }
+          });
+        });
+    </script>
+</body>
+</html>
