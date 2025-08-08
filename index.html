@@ -1,260 +1,1191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- No dark/light mode toggle -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Academy - Learn Blockchain & Cryptocurrency</title>
-    <link rel="stylesheet" href="auth-app/views/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Master Cryptocurrency, Forex Trading & Investment</title>
+    <meta name="description" content="Learn cryptocurrency trading, blockchain technology, and digital asset investment with expert-led courses at CoinAcademia.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mm.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/script.js"></script>
+    <!-- Removed duplicate meta description, kept only one -->
+    <meta name="keywords" content="cryptocurrency, blockchain, education, news">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="images/icon.jpeg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <i class="fab fa-bitcoin"></i>
-                <span>Crypto Academy</span>
-            </div>
-            <nav>
+
+    <!-- Navigation -->
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/icon1.png" alt=""></a>
+            <div class="nav-links">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active" data-page="home">HOME</a></li>
                     <li><a href="courses.html" data-page="courses">COURSES</a></li>
+                    <li><a href="/charts/charts.html">CHART PATTERNS</a></li>
+                    <li><a href="html/trading.html">TRADING</a></li>
+                    <li><a href="html/feedback.html">CONTACT</a></li>
                     <li><a href="about.html" data-page="about">ABOUT US</a></li>
                     <li><a href="blogs.html" data-page="blogs">BLOGS</a></li>
                     <li><a href="affiliate.html" data-page="affiliate">AFFILIATE</a></li>
-<li><a href="#" data-page="login" id="login-btn"><span id="nav-username">LOG IN</span></a></li>
+                    <li><a href="#" data-page="login" id="login-btn"><span id="nav-username">LOG IN</span></a></li>
                 </ul>
                 <div class="burger">
                     <div class="line1"></div>
                     <div class="line2"></div>
                     <div class="line3"></div>
                 </div>
-            </nav>
-        </div>
-    </header>
+            </div>
+            <i class="fas fa-bars" onclick="showMenu()"></i>
+
+        </nav>
+
+    </section>
 
     <main>
-        <!-- Home Page -->
-        <section class="page active" id="home">
-            <div class="hero">
-                <h1>Master Cryptocurrency & Blockchain Technology</h1>
-                <p>Learn from industry experts and start your journey in the world of decentralized finance</p>
-                <button class="cta-btn">Start Learning Now</button>
-            </div>
-            
-            <div class="features">
-                <div class="feature-card">
-                    <i class="fas fa-gem"></i>
-                    <h3>Beginner Friendly</h3>
-                    <p>No prior knowledge required. Start from scratch.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Market Analysis</h3>
-                    <p>Learn technical and fundamental analysis techniques.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Smart Contracts</h3>
-                    <p>Develop and deploy your own blockchain applications.</p>
-                </div>
-            </div>
-        </section>
+    <!-- Scrolling Market Data -->
+  <div class="market-scroll">
+    <marquee behavior="scroll" direction="left" scrollamount="6" id="coin-ticker">
+      Loading market data...
+    </marquee>
+  </div>
 
-        <!-- Courses Page -->
-        <section class="page" id="courses">
-            <h2>Our Crypto Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <img src="https://via.placeholder.com/300x200?text=Crypto+Basics" alt="Crypto Basics">
-                    <h3>Crypto Fundamentals</h3>
-                    <p>Learn the basics of blockchain, wallets, and transactions.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-clock"></i> 4 weeks</span>
-                        <span><i class="fas fa-user-graduate"></i> Beginner</span>
-                    </div>
-                    <button class="enroll-btn">Enroll Now</button>
-                </div>
-                <div class="course-card">
-                    <img src="https://via.placeholder.com/300x200?text=Trading" alt="Trading">
-                    <h3>Crypto Trading Masterclass</h3>
-                    <p>Master technical analysis and trading strategies.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-clock"></i> 6 weeks</span>
-                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
-                    </div>
-                    <button class="enroll-btn">Enroll Now</button>
-                </div>
-                <div class="course-card">
-                    <img src="https://via.placeholder.com/300x200?text=DeFi" alt="DeFi">
-                    <h3>DeFi & Smart Contracts</h3>
-                    <p>Build decentralized applications on Ethereum.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-clock"></i> 8 weeks</span>
-                        <span><i class="fas fa-user-graduate"></i> Advanced</span>
-                    </div>
-                    <button class="enroll-btn">Enroll Now</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Us Page -->
-        <section class="page" id="about">
-            <h2>About Crypto Academy</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Founded in 2018, Crypto Academy has been at the forefront of blockchain education, helping thousands of students navigate the complex world of cryptocurrencies and decentralized technologies.</p>
-                    <p>Our team consists of industry veterans with experience in blockchain development, cryptocurrency trading, and decentralized finance protocols.</p>
-                    <p>We believe in making blockchain education accessible to everyone, regardless of their technical background.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/500x300?text=Our+Team" alt="Our Team">
-                </div>
-            </div>
-        </section>
-
-        <!-- Blogs Page -->
-        <section class="page" id="blogs">
-            <h2>Latest Crypto Articles</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <img src="https://via.placeholder.com/300x200?text=Bitcoin" alt="Bitcoin">
-                    <div class="blog-content">
-                        <h3>Bitcoin Halving 2024: What to Expect</h3>
-                        <p class="blog-meta">Posted on May 15, 2024</p>
-                        <p>An in-depth analysis of the upcoming Bitcoin halving event and its potential market impact.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <img src="https://via.placeholder.com/300x200?text=Ethereum" alt="Ethereum">
-                    <div class="blog-content">
-                        <h3>Ethereum 2.0: The Complete Guide</h3>
-                        <p class="blog-meta">Posted on April 28, 2024</p>
-                        <p>Everything you need to know about Ethereum's transition to proof-of-stake.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <img src="https://via.placeholder.com/300x200?text=DeFi" alt="DeFi">
-                    <div class="blog-content">
-                        <h3>Top DeFi Projects to Watch in 2024</h3>
-                        <p class="blog-meta">Posted on April 10, 2024</p>
-                        <p>Our analysts pick the most promising decentralized finance projects this year.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Affiliate Page -->
-        <section class="page" id="affiliate">
-            <h2>Affiliate Program</h2>
-            <div class="affiliate-content">
-                <div class="affiliate-text">
-                    <h3>Earn Crypto By Sharing Knowledge</h3>
-                    <p>Join our affiliate program and earn commissions for every student you refer to Crypto Academy.</p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> 20% commission on all course sales</li>
-                        <li><i class="fas fa-check-circle"></i> Recurring earnings for subscription products</li>
-                        <li><i class="fas fa-check-circle"></i> Real-time tracking dashboard</li>
-                        <li><i class="fas fa-check-circle"></i> Payouts in crypto or fiat</li>
-                    </ul>
-                    <button class="cta-btn">Join Affiliate Program</button>
-                </div>
-                <div class="affiliate-image">
-                    <img src="https://via.placeholder.com/400x300?text=Affiliate+Program" alt="Affiliate Program">
-                </div>
-            </div>
-        </section>
-
-        <!-- Login Page -->
-        <section class="page" id="login">
-            <div class="login-container">
-                <div class="login-form">
-                    <h2>Login to Your Account</h2>
-                    <form id="loginForm">
-                        <div class="form-group">
-                            <label for="login-id">Username or Email</label>
-                            <input type="text" id="login-id" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" required>
-                        </div>
-                        <button type="submit" class="login-btn">Log In</button>
-                    </form>
-                    <button id="google-login" class="login-btn" style="background:#4285F4;margin-top:10px"><i class="fab fa-google" style="margin-right:8px"></i>Log in with Google</button>
-                    <p class="signup-link">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
-                </div>
+    <!-- Introduction Section -->
+     <Section class="section1">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome to Coin Academia</h1>
+                <p>Your source for Forex and cryptocurrency education and news.</p>
                 
-                <div class="signup-form" style="display: none;">
-                    <h2>Create New Account</h2>
-                    <form id="signupForm">
-                        <div class="form-group">
-                            <label for="signup-username">Username</label>
-                            <input type="text" id="signup-username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-email">Email</label>
-                            <input type="email" id="signup-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-referral">Referral Code (optional)</label>
-                            <input type="text" id="signup-referral">
-                        </div>
-                        <div class="form-group">
-                            <label for="signup-password">Password (min 8 characters)</label>
-                            <input type="password" id="signup-password" required minlength="8">
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" id="confirm-password" required minlength="8">
-                        </div>
-                        <button type="submit" class="signup-btn">Sign Up</button>
-                    </form>
-                    <p class="login-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
-                </div>
             </div>
-        </section>
-    </main>
+            <div class="col">
+                <img src="images/icon1.png" alt="Coin Image">
+    
+            </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Crypto Academy</h3>
-                <p>Your gateway to blockchain and cryptocurrency education.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </Section>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="animated-bg"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Master the Future of
+                            <span class="text-gradient">Cryptocurrency</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Learn from industry experts and master cryptocurrency trading, blockchain technology, 
+                            and digital asset investment strategies with our comprehensive courses.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="10000">367</div>
+                                <div class="stat-label">Students Taught</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="50">20</div>
+                                <div class="stat-label">Expert Courses</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="95">56</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#courses" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-play me-2"></i>Start Learning
+                            </a>
+                            <a href="#market" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-chart-line me-2"></i>View Market
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#" data-page="home">Home</a></li>
-                    <li><a href="#" data-page="courses">Courses</a></li>
-                    <li><a href="#" data-page="blogs">Blog</a></li>
-                    <li><a href="#" data-page="affiliate">Affiliate</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-visual">
+                        <div class="floating-card card-1">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Bitcoin</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fab fa-ethereum"></i>
+                            <span>Ethereum</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Trading</span>
+                        </div>
+                        <div class="central-graphic">
+                            <div class="pulse-ring"></div>
+                            <div class="crypto-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Crypto Academy. All rights reserved.</p>
+    </section>
+
+    <!-- Market Overview -->
+    <section id="market" class="market-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Live Market Overview</h2>
+                    <p class="section-subtitle">Real-time cryptocurrency market data and statistics</p>
+                </div>
+            </div>
+            
+            <!-- Market Stats -->
+            <div class="row mb-5">
+                <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="market-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="market-stats">
+                            <div class="stat-value" id="marketCap">Loading...</div>
+                            <div>Total Market Cap: <span id="marketCap"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="market-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="volume">Loading...</div>
+                            <div>24h Volume: <span id="volume"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="market-stat-card">
+                        <div class="stat-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="btcDominance">Loading...</div>
+                            <div>Bitcoin Dominance: <span id="btcDominance"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="market-stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="activeCryptos">Loading...</div>
+                            <div>Active Cryptos: <span id="activeCryptos"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Cryptocurrencies -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="crypto-table-container" data-aos="fade-up">
+                        <h3 class="mb-4">Top Cryptocurrencies</h3>
+                        <div class="crypto-table-scroll">
+                          <table class="table-a crypto-table" style="min-width:340px;width:100%;">
+                            <thead>
+                              <tr>
+                                <th>Cryptocurrency</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>Market Cap</th>
+                              </tr>
+                            </thead>
+                            <tbody id="coin-list"></tbody>
+                          </table>
+                        </div>
+    <style>
+      /* Make Top Cryptocurrencies section vertically scrollable and mobile-friendly */
+      .crypto-table-scroll {
+        max-height: 420px;
+        overflow-y: auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        background: #fff;
+      }
+      @media (max-width: 600px) {
+        .crypto-table-scroll {
+          max-height: 320px;
+          min-width: 100vw;
+          margin-left: -16px;
+          margin-right: -16px;
+        }
+        .crypto-table th, .crypto-table td {
+          font-size: 0.95em;
+          padding: 0.5em 0.2em;
+          white-space: nowrap;
+        }
+      }
+      .crypto-table th, .crypto-table td {
+        text-align: left;
+        vertical-align: middle;
+      }
+    </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Featured Courses -->
+    <section id="courses" class="courses-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">Featured Courses</h2>
+                    <p class="section-subtitle">Master cryptocurrency trading and blockchain technology</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Updated Featured Courses to match Affiliate.html -->
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category" style="color:#3a36c4;font-weight:bold;">Elite</div>
+                            <br>
+                            <h4 class="course-title">Masterclass: Wealth Building</h4>
+                            <p class="course-description">
+                                Unlock advanced wealth-building strategies, portfolio scaling, and elite-level investment insights for serious crypto investors.
+                            </p>
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                                <span class="course-students"><i class="fas fa-users"></i> 500+ students</span>
+                            </div>
+                            <div class="course-price">
+                                <span class="price">$1000</span>
+                                <a href="/payments/pay.html?course=masterclass" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">Premium</div>
+                            <br>
+                            <h4 class="course-title">Portfolio Management</h4>
+                            <p class="course-description">
+                                Learn to build, balance, and manage a high-performing crypto portfolio for long-term growth and risk management.
+                            </p>
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                                <span class="course-students"><i class="fas fa-users"></i> 1,500 students</span>
+                            </div>
+                            <div class="course-price">
+                                <span class="price">$500</span>
+                                <a href="/payments/pay.html?course=portfolio" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">Advanced</div>
+                            <br>
+                            <h4 class="course-title">Technical Analysis</h4>
+                            <p class="course-description">
+                                Master chart patterns, indicators, and technical tools to make informed trading decisions in any market condition.
+                            </p>
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                                <span class="course-students"><i class="fas fa-users"></i> 1,850 students</span>
+                            </div>
+                            <div class="course-price">
+                                <span class="price">$350</span>
+                                <a href="/payments/pay.html?course=technical" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">Intermediate</div>
+                            <br>
+                            <h4 class="course-title">Trading Strategies</h4>
+                            <p class="course-description">
+                                Explore proven trading strategies, risk management, and real-world tactics to boost your crypto trading results.
+                            </p>
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                                <span class="course-students"><i class="fas fa-users"></i> 1,200 students</span>
+                            </div>
+                            <div class="course-price">
+                                <span class="price">$250</span>
+                                <a href="/payments/pay.html?course=trading" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="course-card">
+                        <div class="course-image">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-category">Basic</div>
+                            <br>
+                            <h4 class="course-title">Crypto Fundamentals</h4>
+                            <p class="course-description">
+                                Learn the basics of Bitcoin, blockchain, wallets, and how to get started in the world of cryptocurrency.
+                            </p>
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                                <span class="course-students"><i class="fas fa-users"></i> 2,450 students</span>
+                            </div>
+                            <div class="course-price">
+                                <span class="price">$90</span>
+                                <a href="/payments/pay.html?course=starter" class="btn btn-primary">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-content">
+                        <h2 class="section-title">Why Choose CoinAcademia?</h2>
+                        <p class="section-subtitle">
+                            We're India's premier cryptocurrency education platform, dedicated to providing 
+                            comprehensive and practical knowledge in the rapidly evolving digital asset space.
+                        </p>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>Expert Instructors</h5>
+                                    <p>Learn from industry professionals with years of trading experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>Certified Courses</h5>
+                                    <p>Get industry-recognized certificates upon course completion</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>Community Support</h5>
+                                    <p>Join our active community of traders and investors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-visual">
+                        <div class="achievement-cards">
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="achievement-text">
+                                    <h4>10,000+</h4>
+                                    <p>Students Trained</p>
+                                </div>
+                            </div>
+                            
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="achievement-text">
+                                    <h4>4.8/5</h4>
+                                    <p>Average Rating</p>
+                                </div>
+                            </div>
+                            
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="achievement-text">
+                                    <h4>50+</h4>
+                                    <p>Courses Available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- Affiliate Page -->
+        <section class="page" id="affiliate">
+            <h2 class="affiliate-title">Affiliate Program</h2>
+            <div class="affiliate-content pro-affiliate-content">
+                <div class="affiliate-text pro-affiliate-text">
+                    <h3 class="affiliate-heading">Earn Crypto By Sharing Knowledge</h3>
+                    <p class="affiliate-desc">Join our affiliate program and earn commissions for every student you refer to Crypto Academy.</p>
+                    <ul class="affiliate-benefits">
+                        <li><i class="fas fa-check-circle"></i> <span><span id="commission-counter">0</span>% commission on all course sales</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="affiliate-earnings">Recurring earnings for subscription products</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="dashboard-status">Real-time tracking dashboard</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span id="payout-status">Payouts in crypto or fiat</span></li>
+                    </ul>
+                    <button class="cta-btn pro-affiliate-btn">Join Affiliate Program</button>
+                </div>
+            <style>            
+            .affiliate-live {
+              margin-top: 1.5em;
+              background: #f7f8fa;
+              border-radius: 8px;
+              padding: 1em 1.2em 1.2em 1.2em;
+              box-shadow: 0 1px 6px rgba(60,60,120,0.06);
+              text-align: left;
+            }
+            .affiliate-label {
+              font-weight: 600;
+              color: #3a36c4;
+              margin-bottom: 0.4em;
+              display: block;
+            }
+            .affiliate-referral-box {
+              display: flex;
+              align-items: center;
+              gap: 0.7em;
+              margin-bottom: 0.3em;
+            }
+            .affiliate-referral-input {
+              font-size: 1.1em;
+              font-weight: 600;
+              color: #2d2e4a;
+              background: #fff;
+              border: 1.5px solid #e0e3ef;
+              border-radius: 7px;
+              padding: 0.5em 1em;
+              width: 180px;
+              letter-spacing: 0.04em;
+              transition: border 0.2s;
+            }
+            .affiliate-copy-btn {
+              background: #3a36c4;
+              color: #fff;
+              border: none;
+              border-radius: 6px;
+              padding: 0.5em 0.8em;
+              font-size: 1.1em;
+              cursor: pointer;
+              transition: background 0.2s;
+            }
+            .affiliate-copy-btn:hover {
+              background: #10b981;
+              color: #fff;
+            }
+        </style>
+    </section>
+
+    <!-- Call to Action Section -->
+
+    <section id="get-started" class="cta-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to Start Your Crypto Journey?</h2>
+                        <p class="cta-subtitle">
+                            Join thousands of students who have successfully learned cryptocurrency trading and investment
+                        </p>
+                        <div class="cta-actions">
+                            <a href="#courses" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-rocket me-2"></i>Start Learning Today
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-envelope me-2"></i>Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h5 class="widget-title">
+                            <i class="fas fa-coins text-warning me-2"></i>CoinAcademia
+                        </h5>
+                        <p class="widget-text">
+                            India's premier cryptocurrency education platform. Master the future of finance with our expert-led courses.
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#courses">Courses</a></li>
+                            <li><a href="#market">Market</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="/Affiliate.html">Affiliate</a></li>
+                            <li><a href="html/trading.html">Trading</a></li>
+                            <li><a href="html/blogs.html">Blogs</a></li>
+                            <li><a href="html/feedback.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">Popular Courses</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Bitcoin Fundamentals</a></li>
+                            <li><a href="#">Technical Analysis</a></li>
+                            <li><a href="#">DeFi Mastery</a></li>
+                            <li><a href="#">Trading Strategies</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h6 class="widget-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-envelope me-2"></i><a href="html/feedback.html">info@coinacademia.in</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="copyright">
+                        &copy; 2025 CoinAcademia. All rights reserved. | 
+                        <a href="html/policy.html" class="footer-link">Privacy Policy</a> | 
+                        <a href="#" class="footer-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
     <script src="script.js"></script>
+    <script>
+    
+    // Render top 100 coins, remove image icons from coin-list
+    document.addEventListener('DOMContentLoaded', function() {
+      function renderCoinList(coins) {
+        const tbody = document.getElementById('coin-list');
+        // Clear previous rows to prevent flashing old/blank symbols
+        tbody.innerHTML = '';
+        coins.slice(0, 100).forEach(function(coin) {
+          const symbol = coin.symbol.toUpperCase();
+          // Use CoinGecko API image for the coin logo
+          const img = coin.image ? `<img src="${coin.image}" alt="${symbol} logo" style="width:22px;height:22px;vertical-align:middle;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.07);margin-right:6px;">` : '';
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${img}<span style="vertical-align:middle;">${symbol}</span></td>
+            <td>$${Number(coin.current_price).toLocaleString()}</td>
+            <td style="color:${coin.price_change_percentage_24h > 0 ? '#10b981' : '#ef4444'};font-weight:600;">
+              ${coin.price_change_percentage_24h > 0 ? '+' : ''}${coin.price_change_percentage_24h.toFixed(2)}%
+            </td>
+            <td>$${Number(coin.market_cap).toLocaleString()}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+      // If using an API, replace this with your fetch logic
+      if (window.top100Coins) {
+        renderCoinList(window.top100Coins);
+      } else if (typeof fetch === 'function') {
+        fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+          .then(res => res.json())
+          .then(data => renderCoinList(data));
+      }
+    });
+    </script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        function showMenu() {
+            document.querySelector('.nav-links').style.right = "0";
+        }
+
+        function hideMenu() {
+            document.querySelector('.nav-links').style.right = "-200px";
+        }
+    </script>
+
+
+        
+                      
+                    
+            <script>
+            // Animate commission counter
+            document.addEventListener('DOMContentLoaded', function() {
+              let commission = 0;
+              const target = 50;
+              const counter = document.getElementById('commission-counter');
+              function animateCommission() {
+                if (commission < target) {
+                  commission++;
+                  counter.textContent = commission;
+                  setTimeout(animateCommission, 40);
+                } else {
+                  counter.textContent = target;
+                }
+              }
+              animateCommission();
+              // Live referral code generator
+              function randomCode() {
+                return 'CRYPTO-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+              }
+              const referralInput = document.getElementById('referral-code');
+              referralInput.value = randomCode();
+              // Copy referral code
+              document.getElementById('copy-referral').addEventListener('click', function() {
+                referralInput.select();
+                referralInput.setSelectionRange(0, 99999);
+                document.execCommand('copy');
+                const feedback = document.getElementById('referral-feedback');
+                feedback.style.display = 'inline';
+                setTimeout(() => feedback.style.display = 'none', 1200);
+              });
+              // Simulate live dashboard and payout status
+              setInterval(() => {
+                const dashboard = document.getElementById('dashboard-status');
+                const payout = document.getElementById('payout-status');
+                dashboard.textContent = 'Real-time tracking dashboard (' + (Math.floor(Math.random()*10)+1) + ' active referrals)';
+                payout.textContent = 'Payouts in crypto or fiat (' + (Math.floor(Math.random()*5)+1) + ' paid this week)';
+              }, 3500);
+              // Simulate live earnings
+              setInterval(() => {
+                const earnings = document.getElementById('affiliate-earnings');
+                const amount = (Math.random()*100).toFixed(2);
+                earnings.textContent = `Recurring earnings for subscription products ($${amount} earned today)`;
+              }, 4200);
+              // Join button feedback
+              document.querySelector('.pro-affiliate-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                this.textContent = 'Request Sent!';
+                this.style.background = '#10b981';
+                setTimeout(() => {
+                  this.textContent = 'Join Affiliate Program';
+                  this.style.background = '';
+                }, 2200);
+              });
+            });
+            </script>
+                
+            <style>
+            /* Affiliate Page Styles */
+            .pro-affiliate-content {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 48px;
+              background: linear-gradient(90deg, #f7f8fa 60%, #e6e9f7 100%);
+              border-radius: 18px;
+              box-shadow: 0 4px 24px rgba(60,60,120,0.07);
+              padding: 48px 32px 36px 32px;
+              margin: 36px auto 32px auto;
+              max-width: 1100px;
+              flex-wrap: wrap;
+            }
+            .pro-affiliate-text {
+              flex: 1 1 340px;
+              min-width: 320px;
+              max-width: 520px;
+              padding-right: 18px;
+            }
+            .affiliate-title {
+              text-align: center;
+              font-family: 'Poppins',sans-serif;
+              font-weight: 700;
+              font-size: 2.3rem;
+              color: #3a36c4;
+              margin-bottom: 1.7rem;
+              letter-spacing: 0.01em;
+            }
+            .affiliate-heading {
+              font-size: 1.5rem;
+              font-weight: 600;
+              color: #2d2e4a;
+              margin-bottom: 0.7em;
+            }
+            .affiliate-desc {
+              font-size: 1.1rem;
+              color: #4b4e6d;
+              margin-bottom: 1.2em;
+            }
+            .affiliate-benefits {
+              list-style: none;
+              padding: 0;
+              margin-bottom: 1.5em;
+            }
+            .affiliate-benefits li {
+              display: flex;
+              align-items: center;
+              font-size: 1.08em;
+              color: #3a36c4;
+              margin-bottom: 0.7em;
+              font-weight: 500;
+              background: #f0f2fa;
+              border-radius: 8px;
+              padding: 0.6em 1em;
+              box-shadow: 0 1px 4px rgba(60,60,120,0.04);
+              transition: background 0.2s;
+            }
+            .affiliate-benefits li i {
+              color: #10b981;
+              margin-right: 0.7em;
+              font-size: 1.2em;
+            }
+            .affiliate-benefits li span {
+              color: #2d2e4a;
+              font-weight: 500;
+            }
+            .pro-affiliate-btn {
+              background: linear-gradient(90deg,#3a36c4 60%,#10b981 100%);
+              color: #fff;
+              font-weight: 600;
+              border: none;
+              border-radius: 8px;
+              padding: 0.9em 2.2em;
+              font-size: 1.13em;
+              margin-top: 0.5em;
+              box-shadow: 0 2px 8px rgba(58,54,196,0.08);
+              transition: background 0.2s, box-shadow 0.2s;
+              cursor: pointer;
+              letter-spacing: 0.01em;
+            }
+            .pro-affiliate-btn:hover {
+              background: linear-gradient(90deg,#10b981 0%,#3a36c4 100%);
+              box-shadow: 0 4px 16px rgba(58,54,196,0.13);
+            }
+            .pro-affiliate-image {
+              flex: 1 1 320px;
+              min-width: 260px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .pro-affiliate-image img {
+              width: 100%;
+              max-width: 400px;
+              border-radius: 14px;
+              box-shadow: 0 4px 18px rgba(60,60,120,0.11);
+              background: #fff;
+              object-fit: cover;
+            }
+            @media (max-width: 900px) {
+              .pro-affiliate-content {
+                flex-direction: column;
+                gap: 28px;
+                padding: 32px 8vw 24px 8vw;
+              }
+              .pro-affiliate-text {
+                padding-right: 0;
+                max-width: 100%;
+              }
+              .pro-affiliate-image img {
+                max-width: 98vw;
+              }
+            }
+            @media (max-width: 600px) {
+              .pro-affiliate-content {
+                flex-direction: column;
+                gap: 18px;
+                padding: 10px 2vw 10px 2vw;
+                margin: 10px auto 8px auto;
+                box-shadow: 0 2px 8px rgba(60,60,120,0.06);
+            
+              }
+              .pro-affiliate-text {
+                padding-right: 0;
+                max-width: 100%;
+                min-width: 0;
+
+              }
+              .affiliate-title {
+                font-size: 1.1rem;
+                margin-bottom: 1.1rem;
+              }
+              .affiliate-heading {
+                font-size: 1rem;
+                margin-bottom: 0.5em;
+              }
+              .affiliate-desc {
+                font-size: 0.98rem;
+              }
+              .affiliate-benefits li {
+                font-size: 0.97em;
+                padding: 0.5em 0.7em;
+                margin-bottom: 0.5em;
+              }
+              .affiliate-live {
+                padding: 0.7em 0.5em 0.8em 0.5em;
+                font-size: 0.97em;
+              }
+              .affiliate-referral-input {
+                width: 120px;
+                font-size: 0.98em;
+                padding: 0.4em 0.7em;
+              }
+              .affiliate-copy-btn {
+                font-size: 1em;
+                padding: 0.4em 0.7em;
+              }
+              .pro-affiliate-image {
+                min-width: 0;
+                width: 100%;
+                justify-content: flex-start;
+              }
+              .pro-affiliate-image img {
+                max-width: 98vw;
+                min-width: 0;
+                border-radius: 10px;
+                margin: 0 auto;
+                display: block;
+              }
+            }
+            </style>
+        </section>
+
+        <!-- Login Page -->
+        <div id="login-modal" class="pro-modal" style="display:none;">
+            <div class="login-container pro-login-container animate__animated animate__fadeInDown" style="display:none;">
+                <button class="pro-modal-close" id="close-login-modal" aria-label="Close">&times;</button>
+                <div class="login-form pro-login-form" style="display:none;">
+                    <h2 class="pro-login-title">Login to Your Account</h2>
+                    <form id="loginForm">
+                        <div class="form-group pro-form-group">
+                            <label for="login-id">Username or Email</label>
+                            <input type="text" id="login-id" class="pro-input" required autocomplete="username">
+                        </div>
+                        <div class="form-group pro-form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="pro-input" required autocomplete="current-password">
+                        </div>
+                        <button type="submit" class="login-btn pro-login-btn">Log In</button>
+                    </form>
+                    <div class="pro-divider"><span>or</span></div>
+                    <button id="google-login" class="login-btn pro-google-btn" type="button"><i class="fab fa-google"></i> Log in with Google</button>
+                    <p class="signup-link pro-signup-link">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+                </div>
+                <div class="signup-form pro-signup-form" style="display:none;">
+                    <h2 class="pro-login-title">Create New Account</h2>
+                    <form id="signupForm">
+                        <div class="form-group pro-form-group">
+                            <label for="signup-username">Username</label>
+                            <input type="text" id="signup-username" class="pro-input" required autocomplete="username">
+                        </div>
+                        <div class="form-group pro-form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" class="pro-input" required autocomplete="email">
+                        </div>
+                        <div class="form-group pro-form-group">
+                            <label for="signup-referral">Referral Code (optional)</label>
+                            <input type="text" id="signup-referral" class="pro-input">
+                        </div>
+                        <div class="form-group pro-form-group">
+                            <label for="signup-password">Password (min 8 characters)</label>
+                            <input type="password" id="signup-password" class="pro-input" required minlength="8" autocomplete="new-password">
+                        </div>
+                        <div class="form-group pro-form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" class="pro-input" required minlength="8" autocomplete="new-password">
+                        </div>
+                        <button type="submit" class="signup-btn pro-signup-btn">Sign Up</button>
+                    </form>
+                    <p class="login-link pro-login-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    <style>
+    /* Modal overlay for login/signup */
+    .pro-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(30,32,60,0.32);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      overflow-y: auto;
+    }
+    .pro-modal .pro-login-container {
+      margin: 0;
+      box-shadow: 0 12px 32px rgba(60,60,120,0.18), 0 2px 12px rgba(0,0,0,0.11);
+      animation-duration: 0.7s;
+      position: relative;
+    }
+    .pro-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 2.1rem;
+      color: #3a36c4;
+      cursor: pointer;
+      z-index: 2;
+      transition: color 0.2s;
+    }
+    .pro-modal-close:hover {
+      color: #ef4444;
+    }
+    </style>
+    </main>
+
+    
+
+    <script src="script.js"></script>
+    <!-- Animate.css for login animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+    /* Professional, modern login/signup form styles */
+    .pro-login-container {
+      max-width: 400px;
+      margin: 60px auto 40px auto;
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60,60,120,0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+      padding: 36px 32px 28px 32px;
+      position: relative;
+      z-index: 10;
+      transition: box-shadow 0.2s;
+    }
+    .pro-login-form, .pro-signup-form {
+      width: 100%;
+      animation-duration: 0.7s;
+    }
+    .pro-login-title {
+      font-family: 'Poppins',sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #2d2e4a;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .pro-form-group {
+      margin-bottom: 1.1rem;
+    }
+    .pro-form-group label {
+      font-weight: 500;
+      color: #3a36c4;
+      margin-bottom: 0.3rem;
+      display: block;
+      font-size: 1rem;
+    }
+    .pro-input {
+      width: 100%;
+      padding: 0.7em 1em;
+      border: 1.5px solid #e0e3ef;
+      border-radius: 8px;
+      font-size: 1.05em;
+      background: #f7f8fa;
+      color: #2d2e4a;
+      transition: border 0.2s, box-shadow 0.2s;
+      outline: none;
+      margin-top: 0.1em;
+    }
+    .pro-input:focus {
+      border-color: #3a36c4;
+      box-shadow: 0 0 0 2px #3a36c41a;
+      background: #fff;
+    }
+    .pro-login-btn, .pro-signup-btn {
+      width: 100%;
+      background: linear-gradient(90deg,#3a36c4 60%,#4285F4 100%);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8em 0;
+      font-size: 1.1em;
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+      box-shadow: 0 2px 8px rgba(58,54,196,0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .pro-login-btn:hover, .pro-signup-btn:hover {
+      background: linear-gradient(90deg,#4285F4 0%,#3a36c4 100%);
+      box-shadow: 0 4px 16px rgba(58,54,196,0.13);
+    }
+    .pro-google-btn {
+      width: 100%;
+      background: #fff;
+      color: #4285F4;
+      border: 1.5px solid #4285F4;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.8em 0;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      box-shadow: 0 2px 8px rgba(66,133,244,0.08);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .pro-google-btn i {
+      font-size: 1.2em;
+    }
+    .pro-google-btn:hover {
+      background: #4285F4;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(66,133,244,0.13);
+    }
+    .pro-divider {
+      text-align: center;
+      margin: 1.1em 0 1.1em 0;
+      position: relative;
+    }
+    .pro-divider span {
+      background: #fff;
+      color: #b0b3c7;
+      padding: 0 1.1em;
+      font-size: 1em;
+      position: relative;
+      z-index: 2;
+    }
+    .pro-divider:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: #e0e3ef;
+      z-index: 1;
+    }
+    .pro-signup-link, .pro-login-link {
+      text-align: center;
+      margin-top: 0.7em;
+      color: #3a36c4;
+      font-size: 1em;
+    }
+    .pro-signup-link a, .pro-login-link a {
+      color: #4285F4;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .pro-signup-link a:hover, .pro-login-link a:hover {
+      color: #3a36c4;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .pro-login-container {
+        max-width: 98vw;
+        padding: 18px 6vw 18px 6vw;
+        margin: 30px auto 20px auto;
+      }
+      .pro-login-title {
+        font-size: 1.3rem;
+      }
+    }
+    </style>
     <script>
         // Logout handler for nav username
         document.getElementById('nav-username').addEventListener('click', function(e) {
@@ -272,24 +1203,65 @@
 
         document.getElementById('login-btn').addEventListener('click', function(e) {
           e.preventDefault();
+          // Hide all other pages/sections
           document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-          document.getElementById('login').classList.add('active');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          // Always show login form by default
-          document.querySelector('.login-form').style.display = '';
-          document.querySelector('.signup-form').style.display = 'none';
+          // Show modal overlay and login form
+          var modal = document.getElementById('login-modal');
+          var loginContainer = modal.querySelector('.login-container');
+          var loginForm = modal.querySelector('.login-form');
+          var signupForm = modal.querySelector('.signup-form');
+          modal.style.display = 'flex';
+          loginContainer.style.display = '';
+          loginForm.style.display = '';
+          signupForm.style.display = 'none';
+          document.body.style.overflow = 'hidden';
+          // Focus the first input for better UX
+          var loginInput = document.getElementById('login-id');
+          if (loginInput) loginInput.focus();
+        });
+
+        // Activate Google login button
+        document.getElementById('google-login').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'http://localhost:3000/api/auth/google';
+        });
+
+        // Close modal handler
+        document.getElementById('close-login-modal').addEventListener('click', function() {
+          var modal = document.getElementById('login-modal');
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        });
+        // Also close modal on background click (not on form)
+        document.getElementById('login-modal').addEventListener('click', function(e) {
+          if (e.target === this) {
+            this.style.display = 'none';
+            document.body.style.overflow = '';
+          }
         });
 
         // SPA toggle: Sign up and Log in links
         document.getElementById('show-signup').addEventListener('click', function(e) {
           e.preventDefault();
-          document.querySelector('.login-form').style.display = 'none';
-          document.querySelector('.signup-form').style.display = '';
+          var modal = document.getElementById('login-modal');
+          var loginForm = modal.querySelector('.login-form');
+          var signupForm = modal.querySelector('.signup-form');
+          loginForm.style.display = 'none';
+          signupForm.style.display = '';
+          // Focus the first input for better UX
+          var signupInput = document.getElementById('signup-username');
+          if (signupInput) signupInput.focus();
         });
         document.getElementById('show-login').addEventListener('click', function(e) {
           e.preventDefault();
-          document.querySelector('.login-form').style.display = '';
-          document.querySelector('.signup-form').style.display = 'none';
+          var modal = document.getElementById('login-modal');
+          var loginForm = modal.querySelector('.login-form');
+          var signupForm = modal.querySelector('.signup-form');
+          loginForm.style.display = '';
+          signupForm.style.display = 'none';
+          // Focus the first input for better UX
+          var loginInput = document.getElementById('login-id');
+          if (loginInput) loginInput.focus();
         });
 
         // Login form handler
@@ -365,18 +1337,6 @@
         });
 
         // Responsive navbar toggle for media screens
-        // Google login demo handler
-        document.getElementById('google-login').addEventListener('click', function(e) {
-          e.preventDefault();
-          // Simulate Google login (frontend only)
-          loggedInUser = { username: 'GoogleUser', email: 'googleuser@gmail.com' };
-          document.getElementById('nav-username').innerHTML = `<i class="fas fa-user-circle" style="margin-right:6px;"></i> GoogleUser`;
-          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-          document.getElementById('home').classList.add('active');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          document.querySelector('.login-form').style.display = '';
-          document.querySelector('.signup-form').style.display = 'none';
-        });
         const burger = document.querySelector('.burger');
         const navLinks = document.querySelector('.nav-links');
         burger.addEventListener('click', () => {

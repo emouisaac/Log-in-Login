@@ -30,11 +30,14 @@ router.post('/login', async (req, res) => {
 
 // Google OAuth
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  // Successful Google login
-  const user = req.user;
-  const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || 'jwtsecret', { expiresIn: '1d' });
-  res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/?token=${token}`);
-});
+
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    // Successful authentication, redirect or respond as needed
+    // For SPA, you might want to send a token or redirect to a frontend route
+    res.redirect('/');
+  }
+);
 
 module.exports = router;
