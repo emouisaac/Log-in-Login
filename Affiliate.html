@@ -818,12 +818,12 @@
                 <h3 class="user-name">&nbsp;</h3>
                 <div class="user-email" style="font-size:1em;color:#555;margin-bottom:4px;"></div>
                 <div class="user-username" style="font-size:0.95em;color:#888;margin-bottom:8px;"></div>
-                <span class="user-rank">V1</span>
+                <span class="user-rank" id="profile-rank">V0</span>
                 
                 <div class="progress-container">
                     <div class="progress-label">
-                        <span>Progress to V2</span>
-                        <span>0%</span>
+                        <span id="progress-label">Progress to V1</span>
+                        <span id="progress-percent">0%</span>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 0%;"></div>
@@ -864,7 +864,7 @@
                         <div class="stat-label">Total Earnings</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value" id="stat-rank">V1</div>
+                        <div class="stat-value" id="stat-rank">V0</div>
                         <div class="stat-label">Current Rank</div>
                     </div>
                     <div class="stat-card">
@@ -1487,12 +1487,26 @@
                     })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.message === 'Registered successfully') {
-                            alert('Registration successful! You can now log in.');
+                        if (data.token && data.user) {
+                            // Registration successful, auto-login
+                            localStorage.setItem('coinAcademiaToken', data.token);
+                            loggedInUser = data.user;
+                            alert('Registration successful! Welcome, ' + (data.user.name || data.user.email) + '.');
                             document.querySelector('.login-form').style.display = '';
                             document.querySelector('.signup-form').style.display = 'none';
+                            // Immediately update dashboard to show referral code
+                            setProfileFromUser(data.user);
+                            setAffiliateOverview({
+                                rank: 'V0',
+                                invites: 0,
+                                indirect: 0,
+                                earnings: 0,
+                                pending: 0,
+                                progressPercent: 0
+                            });
+                            setReferralDashboard([]);
                         } else {
-                            alert(data.message || 'Registration failed.');
+                            alert(data.error || data.message || 'Registration failed.');
                         }
                     })
                     .catch(() => {
@@ -1584,19 +1598,38 @@
 
         // Set profile UI from backend user object
         function setProfileFromUser(user) {
-            if (!user) return;
             const nameEl = document.querySelector('.user-name');
             const refCodeEl = document.getElementById('ref-code');
             const refLinkInput = document.getElementById('ref-link-input');
             const emailEl = document.querySelector('.user-email');
             const usernameEl = document.querySelector('.user-username');
-            const rankEl = document.querySelector('.user-rank');
+            const rankEl = document.getElementById('profile-rank');
+            if (!user) {
+                if (nameEl) nameEl.textContent = '';
+                if (emailEl) emailEl.textContent = '';
+                if (usernameEl) usernameEl.textContent = '';
+                if (refCodeEl) refCodeEl.textContent = '';
+                if (refLinkInput) refLinkInput.value = '';
+                if (rankEl) rankEl.textContent = 'V0';
+                setProfileProgress('V0', 0);
+                return;
+            }
             if (nameEl) nameEl.textContent = user.fullname || user.name || '';
             if (emailEl) emailEl.textContent = user.email || '';
             if (usernameEl) usernameEl.textContent = user.username || '';
             if (refCodeEl) refCodeEl.textContent = user.referralCode || '';
-            if (refLinkInput) refLinkInput.value = 'https://coinacademia.com/ref/' + (user.referralCode || '');
-            if (rankEl) rankEl.textContent = user.rank || 'V0';
+            if (refLinkInput) refLinkInput.value = user.referralCode ? 'https://coinacademia.com/ref/' + user.referralCode : '';
+            // Default rank to V0 if user has no invites and has not bought any V package
+            let rank = user.rank;
+            if (!rank || rank === '' || rank === undefined || rank === null) {
+                if ((user.invites && user.invites > 0) || (user.purchasedPackage && user.purchasedPackage.startsWith('V'))) {
+                    rank = user.rank || 'V1';
+                } else {
+                    rank = 'V0';
+                }
+            }
+            if (rankEl) rankEl.textContent = rank;
+            setProfileProgress(rank, user.progressPercent || 0);
             // Set SVG profile icon
             const profileIcon = document.getElementById('profile-icon');
             if (profileIcon) {
@@ -1622,11 +1655,11 @@
             const tbody = document.querySelector('.referrals-table tbody');
             if (tbody) {
                 tbody.innerHTML = '';
-                if (!referrals || referrals.length === 0) {
+                if (!referrals || !Array.isArray(referrals) || referrals.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#888;">No referrals yet.</td></tr>`;
                 } else {
                     referrals.forEach(r => {
-                        tbody.innerHTML += `<tr><td>${r.name}</td><td>${r.rank || 'V0'}</td><td>${r.earnings || '$0'}</td><td><span class="status-badge status-${r.active ? 'active' : 'inactive'}">${r.active ? 'Active' : 'Inactive'}</span></td></tr>`;
+                        tbody.innerHTML += `<tr><td>${r.name || ''}</td><td>${r.rank || 'V0'}</td><td>${r.earnings || '$0'}</td><td><span class="status-badge status-${r.active ? 'active' : 'inactive'}">${r.active ? 'Active' : 'Inactive'}</span></td></tr>`;
                     });
                 }
             }
@@ -1636,10 +1669,36 @@
 
         // Set affiliate overview stats from backend data
         function setAffiliateOverview(data) {
-            document.getElementById('stat-invites').textContent = data.invites || 0;
-            document.getElementById('stat-earnings').textContent = '$' + (data.earnings || 0);
-            document.getElementById('stat-pending').textContent = '$' + (data.pending || 0);
-            document.getElementById('stat-rank').textContent = data.rank || 'V0';
+            let rank = (data && data.rank) ? data.rank : 'V0';
+            document.getElementById('stat-invites').textContent = (data && data.invites) ? data.invites : 0;
+            document.getElementById('stat-indirect').textContent = (data && data.indirect) ? data.indirect : 0;
+            document.getElementById('stat-earnings').textContent = '$' + ((data && data.earnings) ? data.earnings : 0);
+            document.getElementById('stat-pending').textContent = '$' + ((data && data.pending) ? data.pending : 0);
+            document.getElementById('stat-rank').textContent = rank;
+            setProfileProgress(rank, data && data.progressPercent ? data.progressPercent : 0);
+
+        }
+
+        // Set progress bar and label based on rank
+        function setProfileProgress(rank, percent) {
+            const progressLabel = document.getElementById('progress-label');
+            const progressPercent = document.getElementById('progress-percent');
+            const progressFill = document.querySelector('.progress-fill');
+            const nextRank = {
+                'V0': 'V1',
+                'V1': 'V2',
+                'V2': 'V3',
+                'V3': 'V4',
+                'V4': 'V5',
+                'V5': null
+            };
+            let label = 'Progress to ' + (nextRank[rank] || 'Max');
+            let pct = percent;
+            if (!percent || percent < 0) pct = 0;
+            if (pct > 100) pct = 100;
+            if (progressLabel) progressLabel.textContent = label;
+            if (progressPercent) progressPercent.textContent = pct + '%';
+            if (progressFill) progressFill.style.width = pct + '%';
         }
 
         // Set upgrade requirements based on user rank
