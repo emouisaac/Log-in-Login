@@ -1206,9 +1206,16 @@
                                         <label for="confirm-password">Confirm Password</label>
                                         <input type="password" id="confirm-password" class="pro-input" required minlength="8" autocomplete="new-password">
                                 </div>
-                                <button type="submit" class="signup-btn pro-signup-btn">Sign Up</button>
-                        </form>
-                        <p class="login-link pro-login-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
+                <button type="submit" class="signup-btn pro-signup-btn">Sign Up</button>
+            </form>
+            <div class="pro-divider"><span>or</span></div>
+            <button id="google-signup" class="signup-btn pro-google-btn" type="button"><i class="fab fa-google"></i> Sign up with Google</button>
+            <p class="login-link pro-login-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
+                // Google signup handler
+                document.getElementById('google-signup').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'http://localhost:3000/api/auth/google';
+                });
                 </div>
         </div>
 </div>
